@@ -171,6 +171,15 @@
    
   <nav class="article-nav">
     
+      <a href="/2023/08/19/%E9%9B%86%E4%BD%93%E7%85%A7/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            集体照
+          
+        </div>
+      </a>
+    
     
       <a href="/2023/07/14/%E4%BD%9C%E8%80%85%E7%9A%84%E5%87%A0%E5%8F%A5%E8%AF%9D/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
@@ -588,6 +597,42 @@
 </style>
     
     
+<script>
+  const password = "2117";
+  const lock_password = window.sessionStorage.getItem("lock_password");
+  console.log(password, lock_password);
+  if (lock_password !== password) {
+    Swal.fire({
+      title: "Please enter password",
+      input: "text",
+      inputAttributes: {
+        autocapitalize: "off",
+      },
+      showCancelButton: false,
+      showLoaderOnConfirm: true,
+      allowOutsideClick: false,
+      confirmButtonText: "Ok",
+    }).then((result) => {
+      console.log(result);
+      if (result.isConfirmed) {
+        console.log(password);
+        if (result.value === password) {
+          window.sessionStorage.setItem("lock_password", result.value);
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Incorrect password, please try again",
+            confirmButtonText: "Ok",
+            allowOutsideClick: false,
+          }).then(() => {
+            window.location.reload();
+          });
+        }
+      }
+    });
+  }
+</script>
+
 
   </div>
 </body>

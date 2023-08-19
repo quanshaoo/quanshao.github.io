@@ -94,6 +94,27 @@
       <article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      <a href="/2023/08/19/%E9%9B%86%E4%BD%93%E7%85%A7/" class="archive-article-date">
+  <time datetime="2023-08-19T04:13:46.000Z" itemprop="datePublished">08/19</time>
+</a>
+       
+<h2 itemprop="name">
+  <a class="archive-article-title" href="/2023/08/19/%E9%9B%86%E4%BD%93%E7%85%A7/"
+    >集体照</a> 
+</h2>
+ 
+
+    </header>
+    
+    
+  </div>
+</article>
+      
+  
+  
+      <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
       <a href="/2023/07/18/%E5%B0%8F%E7%8C%AB/" class="archive-article-date">
   <time datetime="2023-07-18T01:53:59.000Z" itemprop="datePublished">07/18</time>
 </a>
@@ -490,6 +511,42 @@
 </style>
     
     
+<script>
+  const password = "2117";
+  const lock_password = window.sessionStorage.getItem("lock_password");
+  console.log(password, lock_password);
+  if (lock_password !== password) {
+    Swal.fire({
+      title: "Please enter password",
+      input: "text",
+      inputAttributes: {
+        autocapitalize: "off",
+      },
+      showCancelButton: false,
+      showLoaderOnConfirm: true,
+      allowOutsideClick: false,
+      confirmButtonText: "Ok",
+    }).then((result) => {
+      console.log(result);
+      if (result.isConfirmed) {
+        console.log(password);
+        if (result.value === password) {
+          window.sessionStorage.setItem("lock_password", result.value);
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Incorrect password, please try again",
+            confirmButtonText: "Ok",
+            allowOutsideClick: false,
+          }).then(() => {
+            window.location.reload();
+          });
+        }
+      }
+    });
+  }
+</script>
+
 
   </div>
 </body>
